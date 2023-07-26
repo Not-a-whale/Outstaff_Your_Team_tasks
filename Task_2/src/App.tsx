@@ -1,9 +1,8 @@
-import {useContext, useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import './App.css'
 import List from "./components/List.tsx";
 import CartProvider from "./store/CartProvider.tsx";
 import {AppWrapper} from "./App.styles.ts";
-import CartContext from "./store/cart-context.ts";
 import Total from "./components/Total.tsx";
 
 export type CartItemType = {
@@ -20,7 +19,7 @@ function App() {
     const [items, setItems] = useState<CartItemType[]>([]);
     const [exchangeRate, setExchangeRate] = useState<currencyPair>({});
     const [availableCurrencies, setAvailableCurrencies] = useState<string[]>([]);
-    const cartCtx = useContext(CartContext);
+
     function getAvailableCurrenciesWithoutDuplicates(currencies: any) {
         return [...new Set(Object.keys(currencies).map((key) => key.split('-')).flat())];
     }
